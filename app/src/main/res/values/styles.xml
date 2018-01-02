@@ -1,12 +1,25 @@
 <resources>
 
+	<!-- Prevents crash on certain devices to namespace conflict -->
+	<style name="FrameworkRoot.Theme"
+	       parent="Theme.AppCompat.Light.NoActionBar"/>
+
 	<!-- Base application theme. -->
 	<style name="AppTheme"
-	       parent="Theme.AppCompat.Light.DarkActionBar">
+	       parent="FrameworkRoot.Theme">
 		<!-- Customize your theme here. -->
 		<item name="colorPrimary">@color/colorPrimary</item>
 		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
 		<item name="colorAccent">@color/colorAccent</item>
+	</style>
+
+
+	<!-- reference:
+	https://android.jlelse.eu/the-complete-android-splash-screen-guide-c7db82bce565
+	-->
+	<style name="LauncherTheme"
+	       parent="AppTheme">
+		<item name="colorPrimaryDark">@color/colorAccent</item>
 	</style>
 
 </resources>
