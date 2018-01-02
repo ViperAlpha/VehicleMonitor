@@ -1,0 +1,92 @@
+//def versionPropsFile = file('version.properties')
+//
+//Properties versionProps = new Properties()
+//versionProps.load(new FileInputStream(versionPropsFile))
+//
+////
+//// versionCode
+////
+//def versionCode = versionProps['VERSION_CODE'].toInteger()
+//versionProps['VERSION_CODE'] = versionCode.toString()
+//
+////
+//// versionName
+////
+//def versionNameMajor = versionProps['VERSION_NAME_MAJOR'].toInteger()
+//versionProps['VERSION_NAME_MAJOR'] = versionNameMajor.toString()
+//
+//def versionNameMinor = versionProps['VERSION_NAME_MINOR'].toInteger()
+//versionProps['VERSION_NAME_MINOR'] = versionNameMinor.toString()
+//
+//def versionNamePatch = versionProps['VERSION_NAME_PATCH'].toInteger()
+//versionProps['VERSION_NAME_PATCH'] = versionNamePatch.toString()
+//
+//def versionNameBuild = versionProps['VERSION_NAME_BUILD'].toInteger() + 1
+//versionProps['VERSION_NAME_BUILD'] = versionNameBuild.toString()
+//
+//versionProps.store(versionPropsFile.newWriter(), null)
+//
+//def versionName = versionNameMajor + "." + versionNameMinor + "." + versionNamePatch + "." + versionNameBuild
+
+/*
+* Gets the version name from the latest Git tag , REF https://stackoverflow.com/questions/46014619/gradle-script-to-automate-android-versioning-by-git-tags
+*/
+def stdout = new ByteArrayOutputStream()
+exec {
+    commandLine 'git', 'describe', '--tags'
+    standardOutput = stdout
+}
+ext.versionName = stdout.toString().trim() // desta forma é possível usar o método abaixo que lida com -snapshot e RC
+//def (major, minor, patch) = verByGit.tokenize(".")
+//ext.versionMajor = Integer.parseInt(major)
+//ext.versionMinor = Integer.parseInt(minor)
+//ext.versionPatch = Integer.parseInt(patch)
+
+
+/** REF https://blog.jayway.com/2015/03/11/automatic-versioncode-generation-in-android-gradle/
+ *
+ * Builds an Android version code from the version of the project.
+ * This is designed to handle the -SNAPSHOT and -RC format.
+ *
+ * I.e. during development the version ends with -SNAPSHOT. As the code stabilizes and release nears
+ * one or many Release Candidates are tagged. These all end with "-RC1", "-RC2" etc.
+ * And the final release is without any suffix.
+ * @return
+ */
+
+ext {
+    /**
+     * Builds an Android version code from the version of the project.
+     * This is designed to handle the -SNAPSHOT and -RC format.
+     *
+     * I.e. during development the version ends with -SNAPSHOT. As the code stabilizes and release nears
+     * one or many Release Candidates are tagged. These all end with "-RC1", "-RC2" etc.
+     * And the final release is without any suffix.
+     * @return
+     */
+    buildVersionCode = {
+        //The rules is as follows:
+        //-SNAPSHOT counts as 0
+        //-RC* counts as the RC number, i.e. 1 to 98
+        //final release counts as 99.
+        //Thus you can only have 98 Release Candidates, which ought to be enough for everyone
+
+        def candidate = "99"
+
+        def (major, minor, patch) = ext.versionName.toLowerCase().replaceAll('-', '').tokenize('.')
+        if (patch.endsWith("snapshot")) {
+            candidate = "0"
+            patch = patch.replaceAll("[^0-9]", "")
+        } else {
+            def rc
+            (patch, rc) = patch.tokenize("rc")
+            if (rc) {
+                candidate = rc
+            }
+        }
+
+        (major, minor, patch, candidate) = [major, minor, patch, candidate].collect { it.toInteger() }
+
+        (major * 1000000) + (minor * 10000) + (patch * 100) + candidate
+    }
+}

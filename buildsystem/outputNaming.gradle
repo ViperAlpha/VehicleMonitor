@@ -1,0 +1,13 @@
+android.applicationVariants.all { variant ->
+    variant.outputs.all { output ->
+
+        def dateNow = new Date().format("dd-MM-yyyy HHmm")
+
+        def newName = variant.productFlavors[0].name + " " + variant.versionName + " " + variant.versionCode + " " + variant.buildType.name.toUpperCase() + " " +
+                dateNow
+
+        println(newName)
+
+        outputFileName = newName + ".apk"
+    }
+}

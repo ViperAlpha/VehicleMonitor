@@ -1,0 +1,8 @@
+ext.configurations = [
+        applicationId    : "viperalpha.vehiclemonitor",
+        minSdkVersion    : 21,
+        maxSdkVersion    : 27,
+        targetSdkVersion : 27,
+        compileSdkVersion: 27,
+        buildToolsVersion: "27.0.3",
+]
