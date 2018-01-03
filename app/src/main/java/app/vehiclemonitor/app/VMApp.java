@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import com.squareup.leakcanary.LeakCanary;
 
 import app.viperalpha.core.BaseApplication;
+import app.viperalpha.di.app.BaseApplicationModule;
 
 /**
  * Created on 02/01/2018
@@ -34,7 +35,8 @@ public class VMApp extends BaseApplication<VMAppComponent> {
 	@NonNull
 	@Override
 	protected VMAppComponent createComponent() {
-		return DaggerVMAppComponent.builder().build();
+		//noinspection deprecation Dagger anota como deprecated pois ainda não foi utilizado.
+		return DaggerVMAppComponent.builder().baseApplicationModule(new BaseApplicationModule(this)).build();
 	}
 
 

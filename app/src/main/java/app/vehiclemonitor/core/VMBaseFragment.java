@@ -4,36 +4,57 @@ import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 
-import app.viperalpha.di.Injector;
+import app.viperalpha.core.BaseFragment;
+import app.viperalpha.logging.LogUtils;
 
 /**
  * A base Fragment which provides a dependency injection mechanism.
  *
  * @param <T> The DI component class
  */
-public abstract class VMBaseFragment<T> extends Fragment implements Injector<T> {
-
-	private T component;
+public abstract class VMBaseFragment<T> extends BaseFragment<T> {
 
 	@CallSuper
 	@Override
-	public void onActivityCreated(@Nullable final Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-		inject();
+	public void onCreate(@Nullable final Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		LogUtils.logMethod("(onCreate)");
 	}
 
-	@NonNull
+	@CallSuper
 	@Override
-	public T component() {
-		if (component == null) {
-			component = createComponent();
-		}
-		return component;
+	public void onStart() {
+		super.onStart();
+		LogUtils.logMethod("(onStart)");
 	}
 
-	@NonNull
-	protected abstract T createComponent();
+	@CallSuper
+	@Override
+	public void onStop() {
+		super.onStop();
+		LogUtils.logMethod("(onStop)");
+	}
+
+	@CallSuper
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		LogUtils.logMethod("(onDestroy)");
+	}
+
+	@CallSuper
+	@Override
+	public void onLowMemory() {
+		super.onLowMemory();
+		LogUtils.logMethod("(onLowMemory)");
+	}
+
+	@CallSuper
+	@Override
+	public void onSaveInstanceState(@NonNull final Bundle outState) {
+		super.onSaveInstanceState(outState);
+		LogUtils.logMethod("(onSaveInstanceState)");
+	}
 
 }

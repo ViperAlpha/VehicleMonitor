@@ -16,7 +16,6 @@ public class HomeActivity extends VMBaseActivity<HomeActivityComponent> {
 		setTheme(R.style.AppTheme); // é preciso resetar o tema que era usado para Splash Screen.
 
 		setContentView(R.layout.activity_home);
-
 	}
 
 	@NonNull

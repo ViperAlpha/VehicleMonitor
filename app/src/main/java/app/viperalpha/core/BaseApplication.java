@@ -5,8 +5,6 @@ import android.support.annotation.CallSuper;
 import android.support.annotation.NonNull;
 
 import app.viperalpha.di.Injector;
-import app.viperalpha.di.app.BaseApplicationModule;
-import app.viperalpha.di.app.DaggerBaseApplicationComponent;
 
 /**
  * A base Application which provides a dependency injection mechanism.
@@ -21,7 +19,6 @@ public abstract class BaseApplication<T> extends Application implements Injector
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		injectModuleAndStillMakeSubOverride();
 		inject();
 	}
 
@@ -32,10 +29,6 @@ public abstract class BaseApplication<T> extends Application implements Injector
 			component = createComponent();
 		}
 		return component;
-	}
-
-	public void injectModuleAndStillMakeSubOverride() {
-		DaggerBaseApplicationComponent.builder().baseApplicationModule(new BaseApplicationModule(this)).build();
 	}
 
 	@NonNull

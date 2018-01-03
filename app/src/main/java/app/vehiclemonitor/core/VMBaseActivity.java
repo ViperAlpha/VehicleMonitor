@@ -37,42 +37,49 @@ public abstract class VMBaseActivity<T> extends BaseActivity<T> {
 		LogUtils.logMethod("(onCreate)");
 	}
 
+	@CallSuper
 	@Override
 	protected void onStart() {
 		super.onStart();
 		LogUtils.logMethod("(onStart)");
 	}
 
+	@CallSuper
 	@Override
 	protected void onRestart() {
 		super.onRestart();
 		LogUtils.logMethod("(onRestart)");
 	}
 
+	@CallSuper
 	@Override
 	protected void onStop() {
 		super.onStop();
 		LogUtils.logMethod("(onStop)");
 	}
 
+	@CallSuper
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
 		LogUtils.logMethod("(onDestroy)");
 	}
 
+	@CallSuper
 	@Override
 	public void onLowMemory() {
 		super.onLowMemory();
 		LogUtils.logMethod("(onLowMemory)");
 	}
 
+	@CallSuper
 	@Override
 	protected void onSaveInstanceState(final Bundle outState) {
 		super.onSaveInstanceState(outState);
 		LogUtils.logMethod("(onSaveInstanceState)");
 	}
 
+	@CallSuper
 	@Override
 	protected void onRestoreInstanceState(final Bundle savedInstanceState) {
 		super.onRestoreInstanceState(savedInstanceState);

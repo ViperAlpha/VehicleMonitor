@@ -6,6 +6,7 @@ ext.libVersions = [
         leakCanary              : "1.5.4",
         fresco                  : "1.5.0",
         retrofit                : "2.3.0",
+        okHttpLogging           : "3.9.1",
         flexbox                 : "0.3.1",
         rxAndroid               : "2.0.1",
         rxJava                  : "2.1.5",
@@ -15,9 +16,95 @@ ext.libVersions = [
         dagger2                 : "2.14.1", // https://github.com/google/dagger
         javaPoet                : "1.9.0",
         rxBindingUtils          : "2.0.0",
-        espressoVersion         : "3.0.1",
-        junitVersion            : "4.12",
-        mockitoVersion          : "1.10.19",
-        hamcrestVersion         : "1.3",
-        lifeCycleExtensions     : "1.0.0"
+        espresso                : "3.0.1",
+        junit                   : "4.12",
+        mockito                 : "2.7.19",
+        mockitoAll              : "1.10.19",
+        hamcrest                : "1.3",
+        lifeCycleArch           : "1.0.0",
+        liveDataArch            : "1.0.0",
+        roomArch                : "1.0.0",
+        viewModelArch           : "1.0.0",
+        arch                    : "1.0.0",
+        pagingArch              : "1.0.0"
+
 ]
+
+def deps = [:]
+
+def support = [:]
+support.annotations = "com.android.support:support-annotations:$ext.libVersions.androidSupport"
+support.app_compat = "com.android.support:appcompat-v7:$ext.libVersions.androidSupport"
+support.recyclerview = "com.android.support:recyclerview-v7:$ext.libVersions.androidSupport"
+support.cardview = "com.android.support:cardview-v7:$ext.libVersions.androidSupport"
+support.design = "com.android.support:design:$ext.libVersions.androidSupport"
+support.v4 = "com.android.support:support-v4:$ext.libVersions.androidSupport"
+support.core_utils = "com.android.support:support-core-utils:$ext.libVersions.androidSupport"
+deps.support = support
+
+def room = [:]
+room.runtime = "android.arch.persistence.room:runtime:$ext.libVersions.roomArch"
+room.compiler = "android.arch.persistence.room:compiler:$ext.libVersions.roomArch"
+room.rxjava2 = "android.arch.persistence.room:rxjava2:$ext.libVersions.roomArch"
+room.testing = "android.arch.persistence.room:testing:$ext.libVersions.roomArch"
+deps.room = room
+
+
+def lifecycle = [:]
+lifecycle.runtime = "android.arch.lifecycle:runtime:$ext.libVersions.lifeCycleArch"
+lifecycle.extensions = "android.arch.lifecycle:extensions:$ext.libVersions.lifeCycleArch"
+lifecycle.java8 = "android.arch.lifecycle:common-java8:$ext.libVersions.lifeCycleArch"
+lifecycle.compiler = "android.arch.lifecycle:compiler:$ext.libVersions.lifeCycleArch"
+deps.lifecycle = lifecycle
+
+def arch_core = [:]
+arch_core.testing = "android.arch.core:core-testing:$ext.libVersions.arch"
+deps.arch_core = arch_core
+
+
+def retrofit = [:]
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$ext.libVersions.retrofit"
+retrofit.gson = "com.squareup.retrofit2:converter-gson:$ext.libVersions.retrofit"
+retrofit.mock = "com.squareup.retrofit2:retrofit-mock:$ext.libVersions.retrofit"
+deps.retrofit = retrofit
+deps.okhttp_logging_interceptor = "com.squareup.okhttp3:logging-interceptor:$ext.libVersions.okHttpLogging"
+
+def dagger = [:]
+dagger.runtime = "com.google.dagger:dagger:$ext.libVersions.dagger2"
+dagger.android = "com.google.dagger:dagger-android:$ext.libVersions.dagger2"
+dagger.android_support = "com.google.dagger:dagger-android-support:$ext.libVersions.dagger2"
+dagger.compiler = "com.google.dagger:dagger-compiler:$ext.libVersions.dagger2"
+dagger.android_support_compiler = "com.google.dagger:dagger-android-processor:$ext.libVersions.dagger2"
+
+
+
+deps.dagger = dagger
+
+def espresso = [:]
+espresso.core = "com.android.support.test.espresso:espresso-core:$ext.libVersions.espresso"
+espresso.contrib = "com.android.support.test.espresso:espresso-contrib:$ext.libVersions.espresso"
+espresso.intents = "com.android.support.test.espresso:espresso-intents:$ext.libVersions.espresso"
+deps.espresso = espresso
+
+//def atsl = [:]
+//atsl.runner = "com.android.support.test:runner:$ext.libVersions.atsl_runner"
+//atsl.rules = "com.android.support.test:rules:$ext.libVersions.atsl_runner"
+//deps.atsl = atsl
+
+def mockito = [:]
+mockito.core = "org.mockito:mockito-core:$ext.libVersions.mockito"
+mockito.all = "org.mockito:mockito-all:$ext.libVersions.mockitoAll"
+deps.mockito = mockito
+
+deps.paging = "android.arch.paging:runtime:$ext.libVersions.pagingArch"
+//deps.dexmaker = "com.linkedin.dexmaker:dexmaker-mockito:$ext.libVersions.dexmaker"
+deps.constraint_layout = "com.android.support.constraint:constraint-layout:$ext.libVersions.androidSupportConstraint"
+//deps.timber = "com.jakewharton.timber:timber:$ext.libVersions.timber"
+//deps.junit = "junit:junit:$ext.libVersions.junit"
+//deps.mock_web_server = "com.squareup.okhttp3:mockwebserver:$ext.libVersions.mockwebserver"
+//deps.rxjava2 = "io.reactivex.rxjava2:rxjava:$ext.libVersions.rxjava2"
+//deps.rx_android = "io.reactivex.rxjava2:rxandroid:$ext.libVersions.rx_android"
+//deps.hamcrest = "org.hamcrest:hamcrest-all:$ext.libVersions.hamcrest"
+//deps.android_gradle_plugin = "com.android.tools.build:gradle:$ext.libVersions.android_gradle_plugin"
+
+ext.deps = deps
