@@ -59,7 +59,7 @@ android {
             targetSdkVersion 22
         }
 
-        irrisimples {
+        vm {
             dimension "default"
             targetSdkVersion config.targetSdkVersion
         }

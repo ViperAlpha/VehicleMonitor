@@ -3,18 +3,12 @@ package app.vehiclemonitor.features.home;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 
-import javax.inject.Inject;
-
-import app.vehiclemonitor.network.VMApiService;
-import app.viperalpha.di.activity.BaseActivityModule;
 import app.vehiclemonitor.R;
 import app.vehiclemonitor.app.VMApp;
 import app.vehiclemonitor.core.VMBaseActivity;
+import app.viperalpha.di.activity.BaseActivityModule;
 
 public class HomeActivity extends VMBaseActivity<HomeActivityComponent> {
-
-	@Inject
-	VMApiService apiService;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
