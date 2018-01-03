@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
-	package="viperalpha.vehiclemonitor"
+	package="app.vehiclemonitor"
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools">
 
@@ -19,11 +19,14 @@
 		tools:ignore="GoogleAppIndexingWarning">
 
 		<activity
-			android:name=".features.home.HomeActivity">
+			android:name=".features.home.HomeActivity"
+			android:exported="true"
+			android:theme="@style/LauncherTheme"
+			>
 		</activity>
 
 		<activity-alias
-			android:name=".Launcher"
+			android:name="app.vehiclemonitor.Launcher"
 			android:targetActivity=".features.home.HomeActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>

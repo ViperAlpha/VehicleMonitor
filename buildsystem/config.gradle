@@ -1,5 +1,5 @@
 ext.configurations = [
-        applicationId    : "viperalpha.vehiclemonitor",
+        applicationId    : "app.vehiclemonitor",
         minSdkVersion    : 21,
         maxSdkVersion    : 27,
         targetSdkVersion : 27,

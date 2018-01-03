@@ -33,7 +33,7 @@
 */
 def stdout = new ByteArrayOutputStream()
 exec {
-    commandLine 'git', 'describe', '--tags'
+    commandLine 'git', 'describe', '--abbrev=0', '--tags'
     standardOutput = stdout
 }
 ext.versionName = stdout.toString().trim() // desta forma é possível usar o método abaixo que lida com -snapshot e RC
