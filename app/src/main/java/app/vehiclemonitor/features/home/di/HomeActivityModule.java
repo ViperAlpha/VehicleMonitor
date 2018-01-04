@@ -1,4 +1,4 @@
-package app.vehiclemonitor.features.home;
+package app.vehiclemonitor.features.home.di;
 
 import dagger.Module;
 import app.viperalpha.di.activity.BaseActivityModule;

@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import app.vehiclemonitor.R;
 import app.vehiclemonitor.app.VMApp;
 import app.vehiclemonitor.core.VMBaseActivity;
+import app.vehiclemonitor.features.home.di.HomeActivityComponent;
 import app.viperalpha.di.activity.BaseActivityModule;
 
 public class HomeActivity extends VMBaseActivity<HomeActivityComponent> {
@@ -16,6 +17,14 @@ public class HomeActivity extends VMBaseActivity<HomeActivityComponent> {
 		setTheme(R.style.AppTheme); // é preciso resetar o tema que era usado para Splash Screen.
 
 		setContentView(R.layout.activity_home);
+
+		if (savedInstanceState == null) {
+			addFragment();
+		}
+	}
+
+	private void addFragment() {
+		getSupportFragmentManager().beginTransaction().add(R.id.container, HomeFragment.newInstance()).commit();
 	}
 
 	@NonNull

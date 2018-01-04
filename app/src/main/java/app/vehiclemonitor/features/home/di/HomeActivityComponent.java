@@ -1,5 +1,7 @@
-package app.vehiclemonitor.features.home;
+package app.vehiclemonitor.features.home.di;
 
+import app.vehiclemonitor.features.home.HomeActivity;
+import app.viperalpha.di.fragment.BaseFragmentModule;
 import dagger.Subcomponent;
 import app.viperalpha.di.activity.ActivityScope;
 import app.viperalpha.di.activity.BaseActivityComponent;
@@ -16,5 +18,7 @@ import app.viperalpha.di.activity.BaseActivityComponent;
 public interface HomeActivityComponent extends BaseActivityComponent {
 
 	void inject(final HomeActivity activity);
+
+	HomeFragmentComponent injectHomeFragment(BaseFragmentModule baseFragmentModule);
 
 }

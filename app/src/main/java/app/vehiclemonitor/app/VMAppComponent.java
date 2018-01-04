@@ -2,7 +2,7 @@ package app.vehiclemonitor.app;
 
 import javax.inject.Singleton;
 
-import app.vehiclemonitor.features.home.HomeActivityComponent;
+import app.vehiclemonitor.features.home.di.HomeActivityComponent;
 import app.vehiclemonitor.network.VMApiServiceModule;
 import app.viperalpha.di.activity.BaseActivityModule;
 import dagger.Component;
