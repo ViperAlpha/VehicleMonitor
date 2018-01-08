@@ -17,13 +17,15 @@ import javax.inject.Inject;
 import app.vehiclemonitor.R;
 import app.vehiclemonitor.core.VMBaseFragment;
 import app.vehiclemonitor.features.home.di.HomeFragmentComponent;
-import app.viperalpha.utils.providers.Navigator;
 import app.viperalpha.di.fragment.BaseFragmentModule;
 
 public class HomeFragment extends VMBaseFragment<HomeFragmentComponent> {
 
 	@Inject
 	ViewModelProvider.Factory viewModelFactory;
+
+	@Inject
+	HomeNavigator navigator;
 
 	HomeViewModel viewModel;
 
@@ -49,7 +51,6 @@ public class HomeFragment extends VMBaseFragment<HomeFragmentComponent> {
 		super.onActivityCreated(savedInstanceState);
 
 		viewModel = ViewModelProviders.of(this, viewModelFactory).get(HomeViewModel.class);
-		viewModel.setNavigationProvider(new HomeNavigator(new Navigator(getActivity())));
 	}
 
 	@NonNull
@@ -87,7 +88,7 @@ public class HomeFragment extends VMBaseFragment<HomeFragmentComponent> {
 
 		switch (item.getItemId()) {
 			case R.id.add:
-				viewModel.handleAddButtonClick();
+				navigator.addNewVehicle();
 				break;
 		}
 

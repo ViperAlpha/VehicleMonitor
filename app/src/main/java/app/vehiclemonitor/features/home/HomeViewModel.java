@@ -16,8 +16,6 @@ import app.viperalpha.utils.schedulers.BaseSchedulerProvider;
 
 public class HomeViewModel extends ViewModel {
 
-	private HomeNavigator navigationProvider;
-
 	@NonNull
 	private BaseSchedulerProvider schedulerProvider;
 
@@ -32,11 +30,4 @@ public class HomeViewModel extends ViewModel {
 	// 	this.schedulerProvider = schedulerProvider;
 	// }
 
-	void handleAddButtonClick() {
-		navigationProvider.addNewVehicle();
-	}
-
-	public void setNavigationProvider(final HomeNavigator navigationProvider) {
-		this.navigationProvider = navigationProvider;
-	}
 }

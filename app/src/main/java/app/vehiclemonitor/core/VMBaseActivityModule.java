@@ -1,6 +1,9 @@
 package app.vehiclemonitor.core;
 
 import app.viperalpha.di.activity.BaseActivityModule;
+import app.viperalpha.utils.providers.BaseNavigator;
+import app.viperalpha.utils.providers.Navigator;
+import dagger.Binds;
 import dagger.Module;
 
 /**
@@ -12,4 +15,7 @@ import dagger.Module;
 
 @Module(includes = {BaseActivityModule.class})
 public abstract class VMBaseActivityModule {
+
+	@Binds
+	abstract BaseNavigator bindsNavigator(Navigator navigator);
 }
