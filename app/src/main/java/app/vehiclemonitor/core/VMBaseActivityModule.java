@@ -1,6 +1,5 @@
 package app.vehiclemonitor.core;
 
-import app.vehiclemonitor.viewmodel.ViewModelModule;
 import app.viperalpha.di.activity.BaseActivityModule;
 import dagger.Module;
 
@@ -11,7 +10,6 @@ import dagger.Module;
  * @email rms_master@hotmail.com
  */
 
-@Module(includes = {BaseActivityModule.class, ViewModelModule.class})
+@Module(includes = {BaseActivityModule.class})
 public abstract class VMBaseActivityModule {
-
 }

@@ -16,24 +16,27 @@ import app.vehiclemonitor.util.schedulers.BaseSchedulerProvider;
 
 public class HomeViewModel extends ViewModel {
 
+	private HomeNavigator navigationProvider;
+
 	@NonNull
-	private final HomeNavigator navigationProvider;
-	@NonNull
-	private final BaseSchedulerProvider schedulerProvider;
+	private BaseSchedulerProvider schedulerProvider;
 
 	@Inject
-	public HomeViewModel(@NonNull HomeNavigator navigationProvider) {
-
-		this.navigationProvider = navigationProvider;
-		schedulerProvider = null;
-	}
-
-	public HomeViewModel(@NonNull BaseSchedulerProvider schedulerProvider) {
-		this.navigationProvider = null;
+	public HomeViewModel(@NonNull final BaseSchedulerProvider schedulerProvider) {
 		this.schedulerProvider = schedulerProvider;
 	}
 
+	// @Inject
+	// public HomeViewModel(@NonNull HomeNavigator navigationProvider, @NonNull BaseSchedulerProvider schedulerProvider) {
+	// 	this.navigationProvider = navigationProvider;
+	// 	this.schedulerProvider = schedulerProvider;
+	// }
+
 	void handleAddButtonClick() {
 		navigationProvider.addNewVehicle();
+	}
+
+	public void setNavigationProvider(final HomeNavigator navigationProvider) {
+		this.navigationProvider = navigationProvider;
 	}
 }

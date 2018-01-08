@@ -17,6 +17,7 @@ import javax.inject.Inject;
 import app.vehiclemonitor.R;
 import app.vehiclemonitor.core.VMBaseFragment;
 import app.vehiclemonitor.features.home.di.HomeFragmentComponent;
+import app.vehiclemonitor.util.providers.Navigator;
 import app.viperalpha.di.fragment.BaseFragmentModule;
 
 public class HomeFragment extends VMBaseFragment<HomeFragmentComponent> {
@@ -48,6 +49,14 @@ public class HomeFragment extends VMBaseFragment<HomeFragmentComponent> {
 		super.onActivityCreated(savedInstanceState);
 
 		viewModel = ViewModelProviders.of(this, viewModelFactory).get(HomeViewModel.class);
+		viewModel.setNavigationProvider(new HomeNavigator(new Navigator(getActivity())));
+	}
+
+	@NonNull
+	@Override
+	protected HomeFragmentComponent createComponent() {
+		//noinspection ConstantConditions Este método é chamado no OnCreate da super classe, não é necessário null-checks.
+		return ((HomeActivity) getActivity()).component().injectHomeFragment(new BaseFragmentModule(this));
 	}
 
 	@Override
@@ -56,7 +65,6 @@ public class HomeFragment extends VMBaseFragment<HomeFragmentComponent> {
 		if (getArguments() != null) {
 		}
 	}
-
 
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -89,13 +97,6 @@ public class HomeFragment extends VMBaseFragment<HomeFragmentComponent> {
 	@Override
 	public void inject() {
 		component().inject(this);
-	}
-
-	@NonNull
-	@Override
-	protected HomeFragmentComponent createComponent() {
-		//noinspection ConstantConditions Este método é chamado no OnCreate da super classe, não é necessário null-checks.
-		return ((HomeActivity) getActivity()).component().injectHomeFragment(new BaseFragmentModule(this));
 	}
 
 }

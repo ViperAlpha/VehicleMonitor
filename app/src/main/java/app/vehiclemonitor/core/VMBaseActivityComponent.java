@@ -17,5 +17,4 @@ import dagger.Subcomponent;
 @ActivityScope
 @Subcomponent(modules = {VMBaseActivityModule.class})
 public interface VMBaseActivityComponent extends BaseActivityComponent {
-
 }

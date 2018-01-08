@@ -11,6 +11,5 @@ import dagger.Module;
  */
 
 @Module(includes = {BaseApplicationModule.class})
-final class VMAppModule {
-
+abstract class VMAppModule {
 }

@@ -5,6 +5,8 @@ import javax.inject.Singleton;
 import app.vehiclemonitor.features.addeditvehicle.di.AddEditVehicleActivityComponent;
 import app.vehiclemonitor.features.home.di.HomeActivityComponent;
 import app.vehiclemonitor.network.VMApiServiceModule;
+import app.vehiclemonitor.util.schedulers.SchedulerModule;
+import app.vehiclemonitor.viewmodel.ViewModelModule;
 import app.viperalpha.di.activity.BaseActivityModule;
 import dagger.Component;
 
@@ -16,11 +18,12 @@ import dagger.Component;
  */
 
 @Singleton
-@Component(modules = {VMAppModule.class, VMApiServiceModule.class})
+@Component(modules = {VMAppModule.class, VMApiServiceModule.class, SchedulerModule.class, ViewModelModule.class})
 public interface VMAppComponent {
 
 	void inject(VMApp app);
 
 	HomeActivityComponent injectHomeActivity(BaseActivityModule module);
+
 	AddEditVehicleActivityComponent injectAddEditVehicleActivity(BaseActivityModule module);
 }

@@ -1,7 +1,6 @@
 package app.vehiclemonitor.util.schedulers;
 
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -15,9 +14,6 @@ import io.reactivex.schedulers.Schedulers;
  */
 @Singleton
 public class SchedulerProvider implements BaseSchedulerProvider {
-
-	@Nullable
-	private static SchedulerProvider INSTANCE;
 
 	// Prevent direct instantiation.
 	@Inject
