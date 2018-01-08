@@ -1,4 +1,4 @@
-package app.vehiclemonitor.features.home.di;
+package app.vehiclemonitor.features.addeditvehicle.di;
 
 import app.viperalpha.di.fragment.BaseFragmentModule;
 import dagger.Module;
@@ -11,5 +11,6 @@ import dagger.Module;
  */
 
 @Module(includes = {BaseFragmentModule.class})
-public abstract class HomeFragmentModule {
+public class AddEditVehicleFragmentModule {
+
 }

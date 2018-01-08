@@ -7,8 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import app.viperalpha.di.Injector;
-import app.viperalpha.di.activity.BaseActivityModule;
-import app.viperalpha.di.activity.DaggerBaseActivityComponent;
 
 /**
  * A base Activity which provides a dependency injection mechanism.
@@ -23,12 +21,7 @@ public abstract class BaseActivity<T> extends AppCompatActivity implements Injec
 	@Override
 	protected void onCreate(@Nullable final Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		injectBaseModule();
 		inject();
-	}
-
-	private void injectBaseModule() {
-		DaggerBaseActivityComponent.builder().baseActivityModule(new BaseActivityModule(this));
 	}
 
 	@NonNull

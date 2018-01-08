@@ -1,11 +1,18 @@
 package app.vehiclemonitor.features.home;
 
-import android.content.Context;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
+import javax.inject.Inject;
 
 import app.vehiclemonitor.R;
 import app.vehiclemonitor.core.VMBaseFragment;
@@ -13,6 +20,11 @@ import app.vehiclemonitor.features.home.di.HomeFragmentComponent;
 import app.viperalpha.di.fragment.BaseFragmentModule;
 
 public class HomeFragment extends VMBaseFragment<HomeFragmentComponent> {
+
+	@Inject
+	ViewModelProvider.Factory viewModelFactory;
+
+	HomeViewModel viewModel;
 
 	public HomeFragment() {
 		// Required empty public constructor
@@ -32,8 +44,10 @@ public class HomeFragment extends VMBaseFragment<HomeFragmentComponent> {
 	}
 
 	@Override
-	public void onAttach(Context context) {
-		super.onAttach(context);
+	public void onActivityCreated(@Nullable final Bundle savedInstanceState) {
+		super.onActivityCreated(savedInstanceState);
+
+		viewModel = ViewModelProviders.of(this, viewModelFactory).get(HomeViewModel.class);
 	}
 
 	@Override
@@ -43,22 +57,33 @@ public class HomeFragment extends VMBaseFragment<HomeFragmentComponent> {
 		}
 	}
 
+
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
 		View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+		setHasOptionsMenu(true);
+
 		return view;
 	}
 
 	@Override
-	public void onResume() {
-		super.onResume();
+	public void onCreateOptionsMenu(final Menu menu, final MenuInflater inflater) {
+		inflater.inflate(R.menu.home_menu, menu);
+		super.onCreateOptionsMenu(menu, inflater);
 	}
 
 	@Override
-	public void onDetach() {
-		super.onDetach();
+	public boolean onOptionsItemSelected(final MenuItem item) {
+
+		switch (item.getItemId()) {
+			case R.id.add:
+				viewModel.handleAddButtonClick();
+				break;
+		}
+
+		return true;
 	}
 
 	@Override

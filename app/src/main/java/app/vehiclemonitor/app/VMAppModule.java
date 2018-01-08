@@ -1,7 +1,7 @@
 package app.vehiclemonitor.app;
 
-import dagger.Module;
 import app.viperalpha.di.app.BaseApplicationModule;
+import dagger.Module;
 
 /**
  * Created on 02/01/2018
