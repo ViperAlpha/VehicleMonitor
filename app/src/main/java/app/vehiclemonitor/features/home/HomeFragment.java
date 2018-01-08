@@ -17,7 +17,7 @@ import javax.inject.Inject;
 import app.vehiclemonitor.R;
 import app.vehiclemonitor.core.VMBaseFragment;
 import app.vehiclemonitor.features.home.di.HomeFragmentComponent;
-import app.vehiclemonitor.util.providers.Navigator;
+import app.viperalpha.utils.providers.Navigator;
 import app.viperalpha.di.fragment.BaseFragmentModule;
 
 public class HomeFragment extends VMBaseFragment<HomeFragmentComponent> {

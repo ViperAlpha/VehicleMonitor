@@ -1,4 +1,4 @@
-package app.vehiclemonitor.util.schedulers;
+package app.viperalpha.utils.schedulers;
 
 import dagger.Binds;
 import dagger.Module;

@@ -5,7 +5,7 @@ import android.support.annotation.NonNull;
 
 import javax.inject.Inject;
 
-import app.vehiclemonitor.util.schedulers.BaseSchedulerProvider;
+import app.viperalpha.utils.schedulers.BaseSchedulerProvider;
 
 /**
  * Created on 05/01/2018

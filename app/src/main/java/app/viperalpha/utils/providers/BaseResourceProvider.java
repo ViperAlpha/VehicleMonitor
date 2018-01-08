@@ -1,4 +1,4 @@
-package app.vehiclemonitor.util.providers;
+package app.viperalpha.utils.providers;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;

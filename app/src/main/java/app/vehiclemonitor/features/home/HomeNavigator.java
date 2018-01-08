@@ -3,7 +3,7 @@ package app.vehiclemonitor.features.home;
 import javax.inject.Inject;
 
 import app.vehiclemonitor.features.addeditvehicle.AddEditVehicleActivity;
-import app.vehiclemonitor.util.providers.BaseNavigator;
+import app.viperalpha.utils.providers.BaseNavigator;
 import io.reactivex.annotations.NonNull;
 
 /**

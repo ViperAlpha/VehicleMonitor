@@ -1,4 +1,4 @@
-package app.vehiclemonitor.util.providers;
+package app.viperalpha.utils.providers;
 
 import android.app.Activity;
 import android.content.Intent;

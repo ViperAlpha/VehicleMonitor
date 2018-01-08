@@ -5,7 +5,7 @@ import javax.inject.Singleton;
 import app.vehiclemonitor.features.addeditvehicle.di.AddEditVehicleActivityComponent;
 import app.vehiclemonitor.features.home.di.HomeActivityComponent;
 import app.vehiclemonitor.network.VMApiServiceModule;
-import app.vehiclemonitor.util.schedulers.SchedulerModule;
+import app.viperalpha.utils.schedulers.SchedulerModule;
 import app.vehiclemonitor.viewmodel.ViewModelModule;
 import app.viperalpha.di.activity.BaseActivityModule;
 import dagger.Component;
